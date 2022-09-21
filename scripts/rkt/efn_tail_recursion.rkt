@@ -12,9 +12,11 @@
                                                      (+ previous current))
               (even_sum_of_fibonacci_less_than_inner limit sum current (+ previous current))))))
 
+
 (define (even_sum_of_fibonacci_less_than limit)
   (if (negative? limit)
-      (error "Invalid number value")
+      (error "Invalid limit value")
       (even_sum_of_fibonacci_less_than_inner limit 0 1 1)))
+
 
 (even_sum_of_fibonacci_less_than 4000000)
