@@ -8,4 +8,4 @@
       (list* current (loop current (+ previous current))))))
 
 
-(apply + (filter even? (fibonacci_numbers_less_than 4000000)))
+(foldl + 0 (filter even? (fibonacci_numbers_less_than 4000000)))
