@@ -1,0 +1,14 @@
+#lang racket
+
+(require racket/stream)
+
+
+(define (even_fibonacci_numbers_less_than limit)
+  (let loop ([previous 1] [current 1])
+    (if (>= current limit)
+      empty-stream
+      (if (even? current)
+        (stream* current (loop current (+ previous current)))
+        (loop current (+ previous current))))))
+
+(stream-fold + 0 (even_fibonacci_numbers_less_than 4000000))
