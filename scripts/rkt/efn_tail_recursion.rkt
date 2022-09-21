@@ -5,7 +5,7 @@
       0
       (if (not (negative? (- current limit)))
           sum
-          (if (= (remainder current 2) 0)
+          (if (even? current)
               (even_sum_of_fibonacci_less_than_inner limit
                                                      (+ sum current)
                                                      current

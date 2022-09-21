@@ -7,6 +7,5 @@
       (list)
       (list* current (loop current (+ previous current))))))
 
-(fibonacci_numbers_less_than 1000)
 
-
+(apply + (filter even? (fibonacci_numbers_less_than 4000000)))
