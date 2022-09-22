@@ -1,6 +1,6 @@
 #lang racket
 
-(define (even_fibonacci_numbers_less_than limit)
+(define (even-fibonacci-numbers-less-than limit)
   (let loop ([previous 1] [current 1])
     (if (>= current limit)
       (list)
@@ -9,4 +9,4 @@
         (loop current (+ previous current))))))
 
 
-(for/sum ([number (even_fibonacci_numbers_less_than 4000000)]) number)
+(for/sum ([number (even-fibonacci-numbers-less-than 4000000)]) number)
