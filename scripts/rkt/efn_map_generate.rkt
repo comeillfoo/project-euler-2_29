@@ -12,5 +12,5 @@
        0
        (map (lambda (number) (if (even? number) number 0))
             (map fibonacci
-                 (stream->list
+                 (sequence->list
                   (in-inclusive-range 1 (last-fibonacci-number-less-than 4000000 1 1 1))))))

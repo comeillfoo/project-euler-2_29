@@ -2,10 +2,14 @@
 
 (require racket/set)
 
-(define (loop-a limit a b unique)
-  (if (> a limit) unique (loop-a limit (add1 a) b (set-add unique (expt a b)))))
+(define (inner-loop init limit b)
+  (define a init)
+  (if (= a limit) (set (expt a b)) (set-add (inner-loop (add1 a) limit b) (expt a b))))
 
-(define (loop-b limit b unique)
-  (if (> b limit) unique (loop-b limit (add1 b) (loop-a limit 2 b unique))))
+(define (distinct-powers init_b init_a limit_b limit_a)
+  (define b init_b)
+  (if (= b limit_b)
+      (inner-loop init_a limit_a b)
+      (set-union (distinct-powers (add1 b) init_a limit_b limit_a) (inner-loop init_a limit_a b))))
 
-(set-count (loop-b 100 2 (set)))
+(set-count (distinct-powers 2 2 100 100))
