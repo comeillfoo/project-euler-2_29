@@ -1,6 +1,5 @@
 #lang racket
 
-(let ([numbers (let ([powers (in-inclusive-range 2 100)])
-                 (for*/list ([a powers] [b powers])
-                   (expt a b)))])
-  (foldl + 0 (map (lambda (x) 1) (remove-duplicates numbers))))
+(let* ([a (build-list (expt 18 18) (lambda (n) (+ (remainder n 99) 2)))]
+       [b (flatten (group-by (lambda (n) n) a))])
+  (length (remove-duplicates (map expt a b))))
