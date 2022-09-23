@@ -1,5 +1,8 @@
 #lang racket
 
-(let* ([a (build-list (expt 18 18) (lambda (n) (+ (remainder n 99) 2)))]
-       [b (flatten (group-by (lambda (n) n) a))])
-  (length (remove-duplicates (map expt a b))))
+(foldl +
+       0
+       (map (lambda (n) 1)
+            (remove-duplicates (flatten (let ([powers (inclusive-range 2 100)])
+                                          (for/list ([a powers])
+                                            (map (lambda (n) (expt n a)) powers)))))))
