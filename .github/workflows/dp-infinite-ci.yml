@@ -1,0 +1,19 @@
+# Distinct Powers CI test by streams 
+
+name: dp-infinite-lists-ci
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: Bogdanp/setup-racket@v1.8.1
+      with:
+        architecture: 'x64'
+        distribution: 'full'
+        variant: 'CS'
+        version: '8.5'
+    - name: Run until fails
+      run: racket scripts/rkt/dp_infinite_lists.rkt

@@ -6,7 +6,7 @@
 (define (stream-uniq lst)
   (if (stream-empty? lst)
       empty-stream
-      (stream* (stream-first lst)
+      (stream-cons (stream-first lst)
                (stream-uniq (stream-filter (lambda (x) (not (equal? x (stream-first lst))))
                                            (stream-rest lst))))))
 
