@@ -28,5 +28,13 @@ jobs:
         run: raco pkg install review
       - name: Setup Racket Resyntax
         run: sudo raco pkg install --deps search-auto --installation resyntax # I know this is bad practice
+      - name: Caching Racket Dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            /share/pkgs
+            ~/.local/share/racket/8.5/pkgs
+          key: ${{ runner.os }}-racket-${{ hashFiles('/share/pkgs/pkgs.rktd') }}
+          restore-keys: ${{ runner.os }}-racket
       - name: Linting Python Scripts
         run: pylint scripts/py/* tests/py/*
