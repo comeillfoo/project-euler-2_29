@@ -3,13 +3,8 @@
 test module covers some features of
 distinct_powers function
 """
-import sys
-sys.path.append("../..")
-
-from scripts.py.distinct_powers import distinct_powers
-
-
 import pytest
+from distinct_powers import distinct_powers
 
 
 @pytest.mark.parametrize("border", range(101))
