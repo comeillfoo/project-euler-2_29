@@ -27,6 +27,6 @@ jobs:
       - name: Setup Racket Linter - racket-review
         run: raco pkg install review
       - name: Setup Racket Resyntax
-        run: raco pkg install --installation resyntax
+        run: sudo raco pkg install --installation resyntax # I know this is bad practice
       - name: Linting Python Scripts
         run: pylint scripts/py/* tests/py/*
