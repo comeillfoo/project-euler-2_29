@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-
+"""
+this file calculates the number
+of numbers formed by a^b where
+a, b are from 2 to 100
+"""
 
 from typing import Set, Tuple
 
