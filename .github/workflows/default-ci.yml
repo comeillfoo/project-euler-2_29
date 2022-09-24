@@ -32,7 +32,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: |
-            /user/share/racket/pkgs
+            /usr/share/racket/pkgs
             ~/.local/share/racket/8.5/pkgs
           key: ${{ runner.os }}-racket-${{ hashFiles('/share/pkgs/pkgs.rktd') }}
           restore-keys: ${{ runner.os }}-racket
