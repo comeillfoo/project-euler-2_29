@@ -7,11 +7,11 @@
   (define a init)
   (if (= a limit) (set (expt a b)) (set-add (inner-loop (add1 a) limit b) (expt a b))))
 
-(define (external-loop init_b init_a limit_b limit_a)
-  (define b init_b)
-  (if (= b limit_b)
-      (inner-loop init_a limit_a b)
-      (set-union (external-loop (add1 b) init_a limit_b limit_a) (inner-loop init_a limit_a b))))
+(define (external-loop init-b init-a limit-b limit-a)
+  (define b init-b)
+  (if (= b limit-b)
+      (inner-loop init-a limit-a b)
+      (set-union (external-loop (add1 b) init-a limit-b limit-a) (inner-loop init-a limit-a b))))
 
 (define (distinct-powers left right)
   (if (negative? right)
