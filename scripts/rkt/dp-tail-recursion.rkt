@@ -14,7 +14,6 @@
 
 (distinct-powers 2 100)
 
-
-(module+ test 
+(module+ test
   (require rackunit)
   (check-equal? (distinct-powers 2 100) 9183 "Exact task solution"))

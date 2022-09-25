@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup make
-        run: sudo apt install -y make
       - name: Setup Python
         uses: actions/setup-python@v4
         with:

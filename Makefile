@@ -1,3 +1,5 @@
+SHELL:=/bin/bash
+
 RACO?=raco
 FMT?=fmt
 REVIEW?=review
@@ -11,7 +13,8 @@ PYTESTSDIR=$(TESTSDIR)/py
 
 
 racket-format:
-	diff -u <(cat $(RKTDIR)/*.rkt) <($(RACO) $(FMT) $(RKTDIR)/*.rkt)
+	diff -u <(cat $(RKTDIR)/*.rkt ) <($(RACO) $(FMT) $(RKTDIR)/*.rkt )
+
 
 racket-format-fix:
 	$(RACO) $(FMT) -i $(RKTDIR)/*.rkt
@@ -34,4 +37,4 @@ racket-test:
 
 test: python-test racket-test
 
-.PHONY: test lint python-lint racket-lint racket-format racket-format-fix
+.PHONY: test lint python-lint racket-lint racket-format racket-format-fix python-test racket-test

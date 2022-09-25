@@ -8,10 +8,13 @@
           sum
           (if (even? current)
               (sum-of-even-fibonacci-numbers-less-than-inner limit
-                                                     (+ sum current)
-                                                     current
-                                                     (+ previous current))
-              (sum-of-even-fibonacci-numbers-less-than-inner limit sum current (+ previous current))))))
+                                                             (+ sum current)
+                                                             current
+                                                             (+ previous current))
+              (sum-of-even-fibonacci-numbers-less-than-inner limit
+                                                             sum
+                                                             current
+                                                             (+ previous current))))))
 
 (define (sum-of-even-fibonacci-numbers-less-than limit)
   (if (negative? limit)
@@ -19,7 +22,6 @@
       (sum-of-even-fibonacci-numbers-less-than-inner limit 0 1 1)))
 
 (sum-of-even-fibonacci-numbers-less-than 4000000)
-
 
 (module+ test
   (require rackunit)
