@@ -8,4 +8,7 @@
 (define (loop-b limit b unique)
   (if (> b limit) unique (loop-b limit (add1 b) (loop-a limit 2 b unique))))
 
-(set-count (loop-b 100 2 (set)))
+(define (distinct-powers left right)
+  (set-count (loop-b right left (set))))
+
+(distinct-powers 2 100)
