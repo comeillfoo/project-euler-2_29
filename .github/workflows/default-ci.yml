@@ -24,7 +24,7 @@ jobs:
           distribution: 'full' # or: 'minimal' (but you probably don't want 'minimal', see note at the bottom of this doc)
           variant: 'CS'        # or: 'BC' for Racket Before Chez
           version: '8.5'
-      - name: Setup Racket Formatting Tool
+      - name: Setup Racket Formatter - racket-fmt
         run: raco pkg install --deps search-auto fmt
       - name: Setup Racket Linter - racket-review
         run: raco pkg install --deps search-auto review
