@@ -1,4 +1,5 @@
 #lang racket
+(provide (all-defined-out))
 
 (define (fibonacci n)
   (if (<= n 2) n (+ (fibonacci (sub1 n)) (fibonacci (- n 2)))))

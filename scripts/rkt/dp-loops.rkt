@@ -1,4 +1,5 @@
 #lang racket
+(provide (all-defined-out))
 
 (define (distinct-powers left right)
   (for/fold ([length 0])

@@ -1,4 +1,5 @@
 #lang racket
+(provide (all-defined-out))
 
 (define (even-sum-of-fibonacci-numbers limit)
   (cond

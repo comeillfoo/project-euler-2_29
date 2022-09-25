@@ -1,4 +1,5 @@
 #lang racket
+(provide (all-defined-out))
 
 (define (fibonacci-numbers-less-than limit)
   (let loop ([previous 1] [current 1])

@@ -1,4 +1,5 @@
 #lang racket
+(provide (all-defined-out))
 
 (define (sum-of-even-fibonacci-numbers-less-than limit)
   (do ([sum 0] [previous 1 current] [current 1 (+ previous current)])
