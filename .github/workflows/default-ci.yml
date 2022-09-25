@@ -38,3 +38,7 @@ jobs:
           restore-keys: ${{ runner.os }}-racket
       - name: Linting Python Scripts
         run: pylint scripts/py/* tests/py/*
+      - name: Check Racket Scripts Formatting
+        run: diff -u <(cat scripts/rkt/*.rkt) <(raco fmt scripts/rkt/*.rkt)
+      - name: Linting Racket Scripts
+        run: find scripts/rkt/ -name *.rkt -exec raco review {} \;
