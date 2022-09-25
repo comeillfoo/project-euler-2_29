@@ -25,9 +25,9 @@ jobs:
           variant: 'CS'        # or: 'BC' for Racket Before Chez
           version: '8.5'
       - name: Setup Racket Formatting Tool
-        run: raco pkg install fmt
+        run: raco pkg install --deps search-auto fmt
       - name: Setup Racket Linter - racket-review
-        run: raco pkg install review
+        run: raco pkg install --deps search-auto review
       # - name: Setup Racket Resyntax
       #   run: sudo raco pkg install --deps search-auto --installation resyntax # I know this is bad practice
       - name: Caching Racket Dependencies
