@@ -1,16 +1,21 @@
 #lang racket
-(provide (all-defined-out))
+(provide sum-of-even-fibonacci-numbers-less-than)
 
-(define (even-sum-of-fibonacci-numbers limit)
+(define (sum-of-even-fibonacci-numbers-less-than limit)
   (cond
     [(> limit 1)
-     (let ([closest_number (let closest-fibonacci-number ([previous 1] [current 1])
+     (let ([closest-number (let closest-fibonacci-number ([previous 1] [current 1])
                              (if (>= current limit)
                                  previous
                                  (closest-fibonacci-number current (+ previous current))))])
-       (if (even? closest_number)
-           (+ closest_number (even-sum-of-fibonacci-numbers closest_number))
-           (even-sum-of-fibonacci-numbers closest_number)))]
+       (if (even? closest-number)
+           (+ closest-number (sum-of-even-fibonacci-numbers-less-than closest-number))
+           (sum-of-even-fibonacci-numbers-less-than closest-number)))]
     [else 0]))
 
-(even-sum-of-fibonacci-numbers 4000000)
+(sum-of-even-fibonacci-numbers-less-than 4000000)
+
+
+(module+ test
+  (require rackunit)
+  (check-equal? (sum-of-even-fibonacci-numbers-less-than 4000000) 4613732 "Exact task solution"))

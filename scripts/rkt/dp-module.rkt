@@ -1,5 +1,5 @@
 #lang racket
-(provide (all-defined-out))
+(provide distinct-powers)
 
 (define (distinct-powers left right)
   (foldl +
@@ -10,3 +10,9 @@
                                      (expt a b)))))))
 
 (distinct-powers 2 100)
+
+
+(module+ test 
+  (require rackunit)
+  (check-equal? (distinct-powers 2 100) 9183 "Exact task solution"))
+  

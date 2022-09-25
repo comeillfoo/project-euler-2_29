@@ -1,5 +1,5 @@
 #lang racket
-(provide (all-defined-out))
+(provide distinct-powers)
 
 (define (distinct-powers left right)
   (for/fold ([length 0])
@@ -14,3 +14,8 @@
         (raise-argument-error 'incorrect-type "number?" distinct_power))))
 
 (distinct-powers 2 100)
+
+
+(module+ test 
+  (require rackunit)
+  (check-equal? (distinct-powers 2 100) 9183 "Exact task solution"))

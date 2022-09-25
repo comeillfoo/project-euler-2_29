@@ -1,5 +1,5 @@
 #lang racket
-(provide (all-defined-out))
+(provide fibonacci last-fibonacci-number-less-than)
 
 (define (fibonacci n)
   (if (<= n 2) n (+ (fibonacci (sub1 n)) (fibonacci (- n 2)))))

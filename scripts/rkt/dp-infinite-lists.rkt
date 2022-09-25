@@ -1,5 +1,5 @@
 #lang racket
-(provide (all-defined-out))
+(provide distinct-powers)
 
 (require racket/stream)
 
@@ -11,3 +11,8 @@
                              i)))
 
 (distinct-powers 2 100)
+
+
+(module+ test 
+  (require rackunit)
+  (check-equal? (distinct-powers 2 100) 9183 "Exact task solution"))

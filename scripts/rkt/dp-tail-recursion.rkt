@@ -1,5 +1,5 @@
 #lang racket
-(provide (all-defined-out))
+(provide distinct-powers)
 
 (require racket/set)
 
@@ -13,3 +13,8 @@
   (set-count (loop-b right left (set))))
 
 (distinct-powers 2 100)
+
+
+(module+ test 
+  (require rackunit)
+  (check-equal? (distinct-powers 2 100) 9183 "Exact task solution"))

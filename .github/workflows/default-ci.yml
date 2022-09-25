@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Setup make
+        run: sudo apt install -y make
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
@@ -39,15 +41,13 @@ jobs:
           key: ${{ runner.os }}-racket-${{ hashFiles('/share/pkgs/pkgs.rktd') }}
           restore-keys: ${{ runner.os }}-racket
       - name: Linting Python Scripts
-        run: pylint scripts/py/* tests/py/*
+        run: make python-lint
       - name: Check Racket Scripts Formatting
-        run: diff -u <(cat scripts/rkt/*.rkt tests/rkt/*.rkt) <(raco fmt scripts/rkt/*.rkt tests/rkt/*.rkt)
+        run: make racket-format
       - name: Linting Racket Scripts
-        run: find scripts/rkt/ tests/rkt/ -type f -name *.rkt -print0 | xargs -0 -n1 raco review
-      - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=$PYTHONPATH:scripts/py" >> $GITHUB_ENV
+        run: make racket-lint
       - name: Running tests with PyTest
-        run: pytest
+        run: make python-test
       - name: Running tests with RackUnit
-        run: find tests/rkt/ -type f -name *-test.rkt -print0 | xargs -0 -n1 racket
+        run: make racket-test
 
