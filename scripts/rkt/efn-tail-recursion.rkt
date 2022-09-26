@@ -1,25 +1,17 @@
 #lang racket
 (provide sum-of-even-fibonacci-numbers-less-than)
 
-(define (sum-of-even-fibonacci-numbers-less-than-inner limit sum previous current)
-  (if (= limit 0)
-      0
-      (if (not (negative? (- current limit)))
-          sum
-          (if (even? current)
-              (sum-of-even-fibonacci-numbers-less-than-inner limit
-                                                             (+ sum current)
-                                                             current
-                                                             (+ previous current))
-              (sum-of-even-fibonacci-numbers-less-than-inner limit
-                                                             sum
-                                                             current
-                                                             (+ previous current))))))
-
 (define (sum-of-even-fibonacci-numbers-less-than limit)
   (if (negative? limit)
       (raise-argument-error 'negative-limit "non-negative value" limit)
-      (sum-of-even-fibonacci-numbers-less-than-inner limit 0 1 1)))
+      (let inner-summer ([sum 0] [previous 1] [current 1])
+        (if (= limit 0)
+          0
+          (if (not (negative? (- current limit)))
+            sum
+            (if (even? current)
+              (inner-summer (+ sum current) current (+ previous current))
+              (inner-summer sum current (+ previous current))))))))
 
 (sum-of-even-fibonacci-numbers-less-than 4000000)
 
