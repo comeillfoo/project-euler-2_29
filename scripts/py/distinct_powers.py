@@ -9,7 +9,7 @@ from typing import Set, Tuple
 
 
 def distinct_powers(a_bounds: Tuple[int, int] = (0, 0),
-    b_bounds: Tuple[int, int] = (0, 0)) -> Set[int]:
+        b_bounds: Tuple[int, int] = (0, 0)) -> Set[int]:
     """
     function that returns set of
     all combinations of a^b where

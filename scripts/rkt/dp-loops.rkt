@@ -3,16 +3,16 @@
 
 (define (distinct-powers left right)
   (for/fold ([length 0])
-            ([distinct_power
+            ([distinct-power
               (for/fold ([acc '()])
-                        ([a_b (let ([powers (build-list (add1 (- right left))
+                        ([a-b (let ([powers (build-list (add1 (- right left))
                                                         (lambda (n) (+ n left)))])
                                 (for*/list ([a powers] [b powers])
                                   (expt a b)))])
-                (if (= (length (filter (lambda (x) (equal? x a_b)) acc)) 0) (list* a_b acc) acc))])
-    (if (number? distinct_power)
+                (if (= (length (filter (lambda (x) (equal? x a-b)) acc)) 0) (list* a-b acc) acc))])
+    (if (number? distinct-power)
         (add1 length)
-        (raise-argument-error 'incorrect-type "number?" distinct_power))))
+        (raise-argument-error 'incorrect-type "number?" distinct-power))))
 
 (distinct-powers 2 100)
 

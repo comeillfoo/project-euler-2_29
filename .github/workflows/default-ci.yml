@@ -38,14 +38,14 @@ jobs:
             ~/.local/share/racket/8.5/pkgs
           key: ${{ runner.os }}-racket-${{ hashFiles('/share/pkgs/pkgs.rktd') }}
           restore-keys: ${{ runner.os }}-racket
+      - name: Running tests with PyTest
+        run: make python-test
+      - name: Running tests with RackUnit
+        run: make racket-test
       - name: Linting Python Scripts
         run: make python-lint
       - name: Check Racket Scripts Formatting
         run: make racket-format
       - name: Linting Racket Scripts
         run: make racket-lint
-      - name: Running tests with PyTest
-        run: make python-test
-      - name: Running tests with RackUnit
-        run: make racket-test
 
