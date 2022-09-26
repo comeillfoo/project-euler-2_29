@@ -6,12 +6,12 @@
       (raise-argument-error 'negative-limit "non-negative value" limit)
       (let inner-summer ([sum 0] [previous 1] [current 1])
         (if (= limit 0)
-          0
-          (if (not (negative? (- current limit)))
-            sum
-            (if (even? current)
-              (inner-summer (+ sum current) current (+ previous current))
-              (inner-summer sum current (+ previous current))))))))
+            0
+            (if (not (negative? (- current limit)))
+                sum
+                (if (even? current)
+                    (inner-summer (+ sum current) current (+ previous current))
+                    (inner-summer sum current (+ previous current))))))))
 
 (sum-of-even-fibonacci-numbers-less-than 4000000)
 
